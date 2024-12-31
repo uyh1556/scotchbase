@@ -1,0 +1,36 @@
+<!-- whisky/templates/whisky/whisky_list.html -->
+
+{% extends "base.html" %}
+{% load whisky_extras %}
+
+{% block title %}SCOTCH BASE{% endblock %}
+
+{% block content %}
+<div class="content-container">
+    <div class="whisky-header">
+        <h2>Whisky List ({{ object_list.count }})</h2> <!-- 총 위스키 개수를 표시 -->
+        <div class="search-container">
+            <form action="{% url 'whisky_list' %}" method="get">
+                <input type="text" name="q" placeholder="Searching..." class="search-input">
+                <button type="submit" class="search-button">Search</button>
+            </form>
+        </div>
+    </div>
+    <div class="whisky-list">
+        <ul>
+            {% for whisky in object_list %}
+            <li>
+                <a href="{% url 'whisky_detail' whisky.id %}">{{ whisky.name|remove_last_part }}</a>
+            </li>
+            {% endfor %}
+            {% if not object_list %}
+            <li>No whiskies found.</li>
+            {% endif %}
+        </ul>
+    </div>
+</div>
+{% endblock %}
+
+
+
+

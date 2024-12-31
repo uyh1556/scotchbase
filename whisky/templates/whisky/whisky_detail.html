@@ -1,0 +1,17 @@
+<!-- whisky/templates/whisky/whisky_detail.html -->
+{% extends "base.html" %}
+{% load whisky_extras %}
+
+{% block title %}Whisky Detail{% endblock %}
+
+{% block content %}
+<div class="whisky-detail">
+    <h2>{{ whisky.name|remove_last_part }}</h2>
+    <p><strong>Category:</strong> {{ whisky.category }}</p>
+    <p><strong>ABV:</strong> {{ whisky.abv }}%</p>
+    <p><strong>Rating:</strong> {{ whisky.rating }}</p>
+    <p><strong>Price:</strong> {{ whisky.price }} {{ whisky.currency }}</p>
+    <p><strong>Description:</strong> {{ whisky.description }}</p>
+</div>
+{% endblock %}
+
