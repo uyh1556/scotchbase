@@ -51,9 +51,9 @@ jobs:
     # 6. kustomization.yaml 업데이트
     - name: Update Kustomize image tag
       run: |
-        cd manifests
+        cd manifests/base
         kustomize edit set image 505502261492.dkr.ecr.ap-northeast-1.amazonaws.com/scotchbase:${{ github.sha }}
-        git config user.name "uyh1556"
-        git config user.email "uyh1556@naver.com"
+        git config user.name "github-actions"
+        git config user.email "github-actions@github.com"
         git commit -am "Update image tag to ${{ github.sha }}"
         git push
